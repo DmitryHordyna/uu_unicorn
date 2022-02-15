@@ -1,5 +1,4 @@
 //single line comment and something else
-var txt = "Hello World!";
+// var txt = "Hello World!";
 
-
-console.log(txt)
+// console.log(txt)

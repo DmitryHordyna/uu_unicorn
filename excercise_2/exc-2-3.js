@@ -1,6 +1,5 @@
-
 function isPalindrom(word) {
-    //TODO
+  return word.split('').reverse().join('') === word;
 }
 
-console.log(isPalindrom("ohoho")); //true
+console.log(isPalindrom('ohoho')); //true
