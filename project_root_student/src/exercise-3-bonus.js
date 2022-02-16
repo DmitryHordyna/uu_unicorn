@@ -7,27 +7,47 @@ name ->  users[0].getName()
 name -> users[0].setName(newValue)
 */
 
-
-let users = [{
-  name: "Peter",
-  age: 32,
-},
+let users = [
   {
-    name: "John",
+    name: 'Peter',
+    age: 32
+  },
+  {
+    name: 'John',
     age: 15,
     random: 12345
   },
   {
-    name: "Jim",
+    name: 'Jim',
     age: 16,
     id: 15
   }
 ];
 
 function addGettersAndSetters(obj) {
+  for (key in obj) {
+    const getValue = 'get' + key.split('')[0].toUpperCase() + key.slice(1);
+    const setValue = 'set' + key.split('')[0].toUpperCase() + key.slice(1);
 
+    const currentKey = key;
+    obj.count = 0;
+    obj[`${getValue}`] = function () {
+      return this[currentKey];
+    };
+    obj[`${setValue}`] = function (newValue) {
+      this[currentKey] = newValue;
+      return newValue;
+    };
 
+    obj[`${setValue}`] = function (newValue) {
+      this.count++;
+      this[currentKey] = newValue;
+      return newValue;
+    };
+    obj['getCountOfModification'] = function () {
+      return this.count;
+    };
+  }
 }
 
 module.exports = addGettersAndSetters;
-
